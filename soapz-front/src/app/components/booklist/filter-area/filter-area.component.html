@@ -1,0 +1,78 @@
+<div class="m-3">
+<form [formGroup]="forma">
+    <div class="form-outline">
+        <input type="text" id="title" formControlName="title" class="form-control"
+          placeholder="Title" />
+    </div>
+    <div class="form-outline">
+        <input type="text" id="author" formControlName="author" class="form-control"
+          placeholder="Author" />
+    </div>
+    <div class="form-outline d-flex">
+        <input type="number" id="yearMin" formControlName="yearMin" class="form-control"
+          placeholder="Minimal year" />
+        <input type="number" id="yearMax" formControlName="yearMax" class="form-control"
+          placeholder="Maximal year" />
+    </div>
+    <div class="form-outline">
+        <input type="text" id="publisher" formControlName="publisher" class="form-control"
+          placeholder="Publisher" />
+    </div>
+    <div class="form-outline">
+        <input type="text" id="language" formControlName="language" class="form-control"
+          placeholder="Language" />
+    </div>
+    <div class="form-outline d-flex">
+        <input type="number" id="pagesMin" formControlName="pagesMin" class="form-control"
+          placeholder="Minimal pages" />
+        <input type="number" id="pagesMax" formControlName="pagesMax" class="form-control"
+          placeholder="Maximal pages" />
+    </div>
+    <div class="form-outline d-flex">
+        <input type="checkbox" formControlName="isPresent" id="isPresent" class="form-check-input" />
+        <label class="ms-1">Show present only</label>
+    </div>
+<!-- 
+    <div class="form-outline mt-4">
+      <input type="email" id="email" formControlName="email" class="form-control"
+        placeholder="Email address" />
+      <label class="form-label ps-2" for="email">Email</label>
+      <div class="text-danger" *ngIf="!!email&&email.errors?.['required'] && submited">
+        Required row.
+    </div>
+      <div class="text-danger" *ngIf="!!email &&email.errors?.['email'] && submited">
+        Invalid email.
+    </div>
+    </div>
+
+    <div class="form-outline mt-4">
+      <input type="password" id="password" formControlName="password" class="form-control" 
+        placeholder="Password"/>
+      <label class="form-label ps-2" for="password">Password</label>
+    </div>
+    <div class="text-danger" *ngIf="!!password&&password.errors?.['required'] && submited">
+        Required row.
+    </div>
+    <div class="text-danger" *ngIf="!!password&&password.errors?.['UpperCaseStrength'] && submited">
+        Your password must have upper case.
+    </div>
+    <div class="text-danger" *ngIf="!!password &&password.errors?.['LowerCaseStrength'] && submited">
+        Your password must have lower case.
+    </div>
+    <div class="text-danger" *ngIf="!!password &&password.errors?.['NumericStrength'] && submited">
+        Your password must have number.
+    </div>
+    <div class="text-danger" *ngIf="!!password &&password.errors?.['minlength'] && submited">
+        Your password must have minimum 6 symbols.
+    </div>
+    <div class="text-danger" *ngIf="!!error">
+      {{error}}
+    </div> -->
+
+    <div class="text-center pt-1 mb-5 pb-1 mt-4">
+      <button (click)="Filtered()" class="btn btn-warning btn-block fa-lg gradient-custom-2 mb-3" type="button">Search</button>
+    </div>
+
+
+  </form>
+</div>

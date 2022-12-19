@@ -6,8 +6,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Input() isAuth: boolean = false;
-  @Input() isLibrarian: boolean = false;
+  @Input() isAuth: boolean
+  @Input() isLibrarian: boolean
 
   constructor() { }
 

@@ -1,0 +1,12 @@
+<section class="container">
+    <div class="d-flex">
+        <div class="d-flex flex-column w-65">
+            <div *ngFor="let item of bookList">
+                <app-booklist-item [item]="item"></app-booklist-item>
+            </div>
+        </div>
+        <div class="d-flex w-35">
+            <app-filter-area (onFilterComplete)="UpdateBookList($event)"></app-filter-area>
+        </div>
+    </div>
+</section>
