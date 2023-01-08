@@ -1,6 +1,11 @@
-<section class="container">
+<section class="container mt-3">
     <div class="d-flex">
         <div class="d-flex flex-column w-65">
+            <div class="flex-center flex-column" 
+                 *ngIf="isTouched && (bookList == null || bookList.length == 0)">
+                <div class="flex-center fs-1"> No data found </div>
+                <div class="flex-center fs-3">Try to enter less parameters or check for errors</div>
+            </div>
             <div *ngFor="let item of bookList">
                 <app-booklist-item [item]="item"></app-booklist-item>
             </div>

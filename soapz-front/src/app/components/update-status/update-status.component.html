@@ -1,0 +1,45 @@
+<section class="container mt-3">
+    <div class="flex-center">
+        <div class="d-flex flex-column w-90">
+            <div>
+                <h1>Enter user's reservation code</h1>
+            </div>
+            <form [formGroup]="CodeInsert">
+                <div class="d-flex align-items-center ms-3">
+                    Code:&nbsp;&nbsp;
+                    <div class="form-outline d-flex">
+                        <input type="number" id="code" formControlName="code" class="form-control me-2"
+                            placeholder="Reservation code" />
+                    </div>
+                    <button (click)="Inserted()" class="btn btn-info btn-outline-dark" type="button">Find</button>
+                </div>
+            </form>
+            <div class="mt-3 ms-2">
+                <app-my-books-item *ngIf="View!=null" [item]="View"></app-my-books-item>
+            </div>
+            <div *ngIf="View!=null && resStatus!=2">
+                <form [formGroup]="newStatus">
+                    <div class="d-flex ms-3 mt-3 w-30">
+                        <select class="form-select" formControlName="status" required>
+                            <option selected value="">Select new status to update</option>
+                            <option *ngIf="resStatus==0" value="Given">Given</option>
+                            <option *ngIf="resStatus==1" value="Taken">Taken</option>
+                            <option *ngIf="resStatus==0" value="Unvisited">Unvisited</option>
+                            <option *ngIf="resStatus==1" value="Taken late">Taken late</option>
+                            <option *ngIf="resStatus==1" value="Not taken">Not taken</option>
+                            <option *ngIf="resStatus==1" value="Compensated">Compensated</option>
+                        </select>
+                        <button (click)="Change()" class="btn btn-info btn-outline-dark ms-3"
+                            type="button">Update</button>
+                    </div>
+                </form>
+            </div>
+            <div class="text-danger ms-2" *ngIf="!!getstatus &&getstatus.errors?.['required'] && submited">
+                Nothing selected
+              </div>
+            <div class="text-danger ms-1" *ngIf="!!insertError">
+                {{insertError}}
+            </div>
+        </div>
+    </div>
+</section>

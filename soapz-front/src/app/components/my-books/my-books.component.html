@@ -1,0 +1,14 @@
+<section class="container mt-3">
+  <div class="flex-center">
+      <div class="d-flex flex-column w-90">
+          <div class="flex-center flex-column" 
+               *ngIf="isTouched && (bookList == null || bookList.length == 0)">
+              <div class="flex-center fs-1"> You have no books reservated</div>
+          </div>
+          <div *ngFor="let item of bookList">
+              <app-my-books-item [item]="item"></app-my-books-item>
+              <hr>
+          </div>
+      </div>
+  </div>
+</section>

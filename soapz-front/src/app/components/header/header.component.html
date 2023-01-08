@@ -1,31 +1,33 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand ms-2" href="#">Public Library</a>
+<nav class="navbar navbar-expand navbar-dark bg-dark flex-center">
+  <div class="w-75 d-flex">
+    <div class="text-light text-no-wrap flex-between align-items-center fw-bold fs-5">Public Library</div>
   
     <div class="justify-content-between d-flex w-100">
-      <ul class="navbar-nav mt-1">
+      <ul class="navbar-nav flex-between align-items-center">
         <li class="nav-item active">
-          <a class="nav-link" href="/Home">Search books</a>
+          <a class="nav-link p-0 ps-2" href="/Home">Search books</a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Random book</a>
+        <li class="nav-item">
+          <a class="nav-link p-0 ps-2 disabled user-select-none">Random book</a>
         </li>
         <li *ngIf="isAuth">
-          <a class="nav-link"href="#"> My books</a>
+          <a class="nav-link p-0 ps-2" href="/MyBooks"> My books</a>
         </li>
         <li *ngIf="isLibrarian">
-          <a class="nav-link"href="#">Reservation</a>
+          <a class="nav-link" href="/Reservations">Reservations</a>
         </li>
       </ul>
-      
+  </div>
 
 
 
-      <div *ngIf="!isAuth" class="mt-1 me-3">
-        <a class="btn btn-outline-info my-2 my-sm-0 ms-1">Login</a>
-        <a class="btn btn-info my-2 my-sm-0 ms-1 ms-2">Register</a>
+      <div *ngIf="!isAuth" class="mt-1 me-3 d-flex">
+        <a class="btn btn-outline-info my-2 my-sm-0 ms-1" (click)="login()">Login</a>
+        <a class="btn btn-info my-2 my-sm-0 ms-1 ms-2" (click)="register()">Register</a>
       </div> 
-      <div *ngIf="isAuth" class="mt-1 me-3">
-        <a class="btn btn-outline-info my-2 my-sm-0 ms-1 ms-2">Logout</a>
+      <div *ngIf="isAuth" class="mt-1 me-3 d-flex justify-content-end" style="text-align: center; width:800px">
+        <div class="text-light pt-2">Hello, {{user?.Mail}}</div>
+        <a (click)="logout()" class="btn btn-outline-info my-2 my-sm-0 ms-1 ms-2">Logout</a>
       </div>
 
     </div>

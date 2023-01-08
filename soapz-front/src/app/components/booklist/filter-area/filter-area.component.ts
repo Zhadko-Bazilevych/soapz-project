@@ -37,7 +37,7 @@ export class FilterAreaComponent implements OnInit {
   constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
-
+    this.Filtered()
   }
 
   async Filtered() {

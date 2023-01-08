@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BooklistRequest, BooklistResponse } from '../models/bookFilter';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
+import { BookResponse } from '../models/book';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  baseUrl: string = 'https://localhost:44332'
+  baseUrl: string = 'https://localhost:44332/api/Content/'
 
   constructor(private httpClient: HttpClient) { }
 
@@ -22,7 +23,14 @@ export class BookService {
       pagesMin: filter.pagesMin,
       pagesMax: filter.pagesMax
     }
-    const route = `${this.baseUrl}/api/Content/Books`
+    const route = `${this.baseUrl}Books`
     return this.httpClient.post<BooklistResponse>(route, request)
+  }
+
+  BookInfo(id: number){
+    const route = `${this.baseUrl}Books/${id}`
+
+    let params = new HttpParams().set('id', id);
+    return this.httpClient.get<BookResponse>(route, {params: params})
   }
 }

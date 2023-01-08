@@ -1,0 +1,39 @@
+<section class="container w-60 mt-4">
+    <h1 class="mb-4 fs-0">{{book.title}}</h1>
+    <div class="flex-center flex-column">
+        <div class="w-90 d-flex">
+            <div>
+                <div class="d-flex h-500px overflow-hidden" style="border-radius: 0.375em;">
+                    <img src="../../../../assets/Images/Books/{{book.photo}}" alt="" class="h-100">
+                </div>
+                <div *ngIf="book.amount!=0" class="flex-center mt-2">
+                    <button class="fs-5-5 btn btn-dark mb-3 w-100" (click)="Reservation()">
+                        <fa-icon [icon]="faBook"></fa-icon>
+                        Reservate this book
+                    </button>
+                </div>
+                <div class="flex-center mt-2 text-danger">
+                    {{error}}
+                </div>
+            </div>
+            <div class="mt-1 ms-4 flex-between flex-column w-100">
+                <div class="d-flex flex-column fs-5">
+                    <div class="mb-2 d-flex"><b class="col-lg-4">Author:</b> <span class="col-lg-8">{{book.author}}</span></div>
+                    <div class="mb-2 d-flex"><b class="col-lg-4">Published by:</b> <span class="col-lg-8">{{book.publishingHouse}}</span></div>
+                    <div class="mb-2 d-flex"><b class="col-lg-4">Release date:</b> <span class="col-lg-8">{{book.yearPublished}} year</span></div>
+                    <div class="mb-2 d-flex"><b class="col-lg-4">Language:</b> <span class="col-lg-8">{{book.language}}</span></div>
+                    <div class="mb-2 d-flex"><b class="col-lg-4">Pages:</b> <span class="col-lg-8">{{book.pages}}</span></div>
+                    <div class="mb-2 d-flex"><b class="col-lg-4">Genres:</b> <span class="col-lg-8">{{book.genres.join(', ')}}</span></div>
+                    <div class="d-flex mb-2"><b class="col-lg-4">In library:&nbsp;</b>
+                        <div *ngIf="book.amount==0; else elseBlock">No copies</div>
+                        <ng-template #elseBlock>{{book.amount}} {{book.amount>1?'copies':'copy'}}</ng-template>
+                    </div>
+                    <div class="mb-2 d-flex"><b class="col-lg-4">Isbn:</b> <span class="col-lg-8">{{book.isbn}}</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="text-justify mt-3 fs-5">
+            <b>Description:</b> {{book.description }}
+        </div>
+    </div>
+</section>

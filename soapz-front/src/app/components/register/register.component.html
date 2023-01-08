@@ -1,0 +1,92 @@
+<section class="container d-grid" style="height:90vh; place-items: center">
+  <div class="p-5 w-30" style="border: solid 1px gray; border-radius:0.375rem; height: 608px; margin-bottom: 5em;">
+    <!-- Pills navs -->
+    <ul class="nav nav-pills nav-justified mb-4" id="ex1" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class='btn-outline-primary btn' (click)="loginForm()">Login</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class='btn-primary btn' (click)="registerForm()">Register</button>
+      </li>
+    </ul>
+    <!-- Pills navs -->
+
+    <div>
+      <div style="height:24px">
+        <div class="text-danger" *ngIf="!!error">
+          {{error}}
+        </div>
+      </div>
+      <form [formGroup]="register">
+        <!-- Name input -->
+        <div class="form-outline h-94px">
+          <label class="form-label ps-2" for="email">Mail</label>
+          <input type="email" id="email" formControlName="email" class="form-control" placeholder="Your email" />
+          <div class="text-danger ms-2" *ngIf="!!email&&email.errors?.['required'] && submited">
+            Required row.
+          </div>
+          <div class="text-danger ms-2" *ngIf="!!email &&email.errors?.['email'] && submited">
+            Invalid email.
+          </div>
+        </div>
+
+        <div class="form-outline h-94px">
+          <label class="form-label ps-2" for="confirmPassword">Phone</label>
+          <input type="text" id="phone" formControlName="phone" class="form-control" placeholder="Phone number" />
+          <div class="text-danger ms-2" *ngIf="!!phone &&phone.errors?.['required'] && submited">
+            Required row.
+          </div>
+          <div class="text-danger ms-2" *ngIf="!!phone &&phone.errors?.['IsPhone'] && submited">
+            Invalid phone
+          </div>
+        </div>
+
+
+        <div class="form-outline h-94px">
+          <label class="form-label ps-2" for="password">Password</label>
+          <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password" />
+          <div class="text-danger ms-2" *ngIf="!!password&&password.errors?.['required'] && submited">
+            Required row.
+          </div>
+          <div class="text-danger ms-2" *ngIf="!!password&&password.errors?.['UpperCaseStrength'] && submited; else notUpper">
+            Your password must have upper case.
+          </div>
+          <ng-template #notUpper>
+            <div class="text-danger ms-2" *ngIf="!!password &&password.errors?.['LowerCaseStrength'] && submited; else notLower">
+              Your password must have lower case.
+            </div>
+          </ng-template>
+          <ng-template #notLower>
+            <div class="text-danger ms-2" *ngIf="!!password &&password.errors?.['NumericStrength'] && submited; else notNums">
+              Your password must have number.
+            </div>
+          </ng-template>
+          <ng-template #notNums>
+            <div class="text-danger ms-2" *ngIf="!!password &&password.errors?.['minlength'] && submited">
+              Minimum 6 symbols required.
+            </div>
+          </ng-template>
+        </div>
+
+
+        <div class="form-outline h-94px">
+          <label class="form-label ps-2" for="confirmPassword">Confirm password</label>
+          <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" placeholder="Repeat password" />
+          <div class="text-danger ms-2" *ngIf="!!confirmPassword &&confirmPassword.errors?.['required'] && submited">
+            Required row.
+          </div>
+          <div class="text-danger ms-2" *ngIf="!!confirmPassword &&confirmPassword.errors?.['matching'] && submited">
+            Passwords do not match
+          </div>
+        </div>
+        
+
+        <!-- Submit button -->
+        <div class="d-flex justify-content-end">
+          <button type="submit" (click)="Register()" class="btn btn-primary btn-block mt-3">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Pills content -->
+</section>

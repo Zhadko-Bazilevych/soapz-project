@@ -10,16 +10,17 @@ import { BookService } from 'src/app/services/book.service';
 })
 
 export class BooklistComponent implements OnInit {
-  bookList: BooksView[] = []
+  bookList: BooksView[] = [] 
+  isTouched: boolean = false
 
   constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
-
   }
 
   async UpdateBookList(booklistRequest: BooklistRequest){
     const response = await firstValueFrom(this.bookService.BookList(booklistRequest));
+    this.isTouched = true
     if(response == null)
     {
       this.bookList = []
@@ -29,6 +30,4 @@ export class BooklistComponent implements OnInit {
       this.bookList = response!.books
     }
   }
-
-
 }
